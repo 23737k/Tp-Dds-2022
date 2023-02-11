@@ -8,7 +8,7 @@ import dds.grupo3.clases.trayectos.transporte.Linea;
 
 public interface RepoLinea extends JpaRepository<Linea, Long>{
 
-	Optional<Linea> findByNombre(String nombre);
+	Optional<Linea> findOneByNombre(String nombre);
 	
 	Optional<Linea> findById(Long id);
 }

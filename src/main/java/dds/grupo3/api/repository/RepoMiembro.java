@@ -9,6 +9,6 @@ import dds.grupo3.clases.miembro.Miembro;
 public interface RepoMiembro extends JpaRepository<Miembro, Long> {
 	Optional<Miembro> findById(Long id);
 	
-	Optional<Miembro> findByNroDoc(Long nroDoc);
+	Optional<Miembro> findOneByNroDoc(Long nroDoc);
 	
 }

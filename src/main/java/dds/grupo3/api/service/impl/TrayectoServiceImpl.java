@@ -69,9 +69,9 @@ public class TrayectoServiceImpl implements TrayectoService {
 			//----------Transporte---------
 			if(unTramo.getTransporte().getPublico() != null) {
 				// Creacion del transporte - Solo en el transporte publico se ignora el dato del json "inicio llegada"
-				Linea laLinea = repoLinea.findByNombre(unTramo.getTransporte().getPublico().getLinea()).get();
+				Linea laLinea = repoLinea.findOneByNombre(unTramo.getTransporte().getPublico().getLinea()).get();
 				TransportePublico publico = new TransportePublico();
-				FactorEmision fe = repoFactor.findByNombre(unTramo.getTransporte().getFactorEmision()).get();
+				FactorEmision fe = repoFactor.findTopByNombre(unTramo.getTransporte().getFactorEmision()).get();
 				publico.setConsumo(fe);
 				publico.setLinea(laLinea);
 				publico.setNombreTransporte(unTramo.getTransporte().getNombreTransporte());
@@ -98,7 +98,7 @@ public class TrayectoServiceImpl implements TrayectoService {
 				if(unTramo.getTransporte().getVehiculo() != null) {
 					//Si hay Vehiculo es porque es contratado
 					ServicioContratado unServicio = new ServicioContratado();
-					FactorEmision fe = repoFactor.findByNombre(unTramo.getTransporte().getFactorEmision()).get();
+					FactorEmision fe = repoFactor.findTopByNombre(unTramo.getTransporte().getFactorEmision()).get();
 					unServicio.setConsumo(fe);
 					unServicio.setNombreTransporte(unTramo.getTransporte().getNombreTransporte());
 					unServicio.setNombreServicio(unTramo.getTransporte().getVehiculo().getNombreServicio());
@@ -106,7 +106,7 @@ public class TrayectoServiceImpl implements TrayectoService {
 				}else if(unTramo.getTransporte().getFactorEmision() != null) {
 					//Si no hay vehiculo pero hay factor emision, es un vehiculo particular
 					VehiculoParticular particular = new VehiculoParticular();
-					FactorEmision fe = repoFactor.findByNombre(unTramo.getTransporte().getFactorEmision()).get();
+					FactorEmision fe = repoFactor.findTopByNombre(unTramo.getTransporte().getFactorEmision()).get();
 					particular.setConsumo(fe);
 					particular.setNombreTransporte(unTramo.getTransporte().getNombreTransporte());
 					nuevoTramo.setTransporte(particular);
@@ -133,7 +133,7 @@ public class TrayectoServiceImpl implements TrayectoService {
 		repoTrayecto.save(nuevoTrayecto);
 		//----------Carga de participantes del trayecto--------
 		for(Long documento : trayecto.getParticipantes()) {
-			Miembro unMiembro = repoMiembro.findByNroDoc(documento).get();
+			Miembro unMiembro = repoMiembro.findOneByNroDoc(documento).get();
 			unMiembro.agregarUnTrayecto(nuevoTrayecto);
 			nuevoTrayecto.getMiembros().add(unMiembro);
 			repoMiembro.save(unMiembro);

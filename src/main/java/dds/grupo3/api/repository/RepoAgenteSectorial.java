@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface RepoAgenteSectorial extends JpaRepository<AgenteSectorial, Long> {
     Optional<AgenteSectorial> findById(Long id);
 
-    Optional<AgenteSectorial> findByIdAndNombre(Long id, String nombre);
+    Optional<AgenteSectorial> findOneByIdAndNombre(Long id, String nombre);
 }

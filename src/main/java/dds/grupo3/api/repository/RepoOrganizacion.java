@@ -7,5 +7,5 @@ import dds.grupo3.clases.organizacion.Organizacion;
 public interface RepoOrganizacion extends JpaRepository<Organizacion, Long> {
 	Optional<Organizacion> findById(Long id);
 	
-	Optional<Organizacion> findByIdAndRazonSocial(Long id, String RazonSocial);
+	Optional<Organizacion> findOneByIdAndRazonSocial(Long id, String RazonSocial);
 }

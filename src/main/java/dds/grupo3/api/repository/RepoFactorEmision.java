@@ -9,5 +9,5 @@ import dds.grupo3.clases.medible.FactorEmision;
 public interface RepoFactorEmision extends JpaRepository<FactorEmision, Long> {
     Optional<FactorEmision> findById(Long id);
     
-    Optional<FactorEmision> findByNombre(String nombre);
+    Optional<FactorEmision> findTopByNombre(String nombre);
 }

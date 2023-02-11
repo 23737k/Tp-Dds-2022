@@ -85,8 +85,8 @@ public class OrganizacionServiceImpl implements OrganizacionService {
 	public void agregarMiembro(Long id, MiembroDTO miembro) throws Exception{
 		Optional<Organizacion> org = repo.findById(id);
 		if(org.isPresent()) {
-			Optional<Sector> sector = repoSector.findByNombreAndOrganizacionId(miembro.getSector().toUpperCase(), org.get().getId());
-			Optional<Miembro> elMiembro = repoMiembro.findByNroDoc(miembro.getNroDoc());
+			Optional<Sector> sector = repoSector.findOneByNombreAndOrganizacionId(miembro.getSector().toUpperCase(), org.get().getId());
+			Optional<Miembro> elMiembro = repoMiembro.findOneByNroDoc(miembro.getNroDoc());
 			Miembro nuevoMiembro;
 			if(elMiembro.isPresent()) {
 				 nuevoMiembro = elMiembro.get();

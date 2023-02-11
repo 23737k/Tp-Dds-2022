@@ -8,5 +8,5 @@ import dds.grupo3.clases.organizacion.Sector;
 
 public interface RepoSector extends JpaRepository<Sector,Long> {
 
-	Optional<Sector> findByNombreAndOrganizacionId(String nombre, Long org);
+	Optional<Sector> findOneByNombreAndOrganizacionId(String nombre, Long org);
 }

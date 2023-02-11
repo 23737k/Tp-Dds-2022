@@ -8,6 +8,6 @@ import dds.grupo3.api.dto.Usuario;
 @Repository
 public interface RepoUsuario extends JpaRepository<Usuario, Long>{
 
-	public Usuario findByEmail(String email);
+	public Usuario findOneByEmail(String email);
 	
 }

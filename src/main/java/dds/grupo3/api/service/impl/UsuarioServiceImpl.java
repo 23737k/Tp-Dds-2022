@@ -32,7 +32,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Usuario usuario = repoUsuario.findByEmail(username);
+		Usuario usuario = repoUsuario.findOneByEmail(username);
 		if(usuario == null) {
 			throw new UsernameNotFoundException("Usuario o password inválidos");
 		}
