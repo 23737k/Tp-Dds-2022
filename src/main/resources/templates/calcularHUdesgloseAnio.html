@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" th:href="@{/organizaciones/calculoHU}">Impacto Ambiental</a>
+            <a class="navbar-brand" th:href="@{/calculoHU}">Impacto Ambiental</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
                         <a class="nav-link" aria-current="page" th:href="@{/login}" data-toggle="tab" role="tab"
                             aria-controls="nav-0" aria-selected="true">Login</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" th:href="@{/organizaciones/calculoHU}" data-toggle="tab" role="tab"
                             aria-controls="nav-1" aria-selected="true">Calcular HU</a>
                     </li>
@@ -44,54 +44,29 @@
             </div>
         </div>
     </nav>
+    <br>
     <div>
-        <div class="form-group py-2">
-            <form class="form" th:action="@{/organizaciones/calculoHU/valor}">
-                <div class="row py-2">
-                    <div class="col-1"><label>Organizacion</label></div>
-                    <div class="col-md">
-                        <select class="form-control" id="dropDownList" th:name="org">
-                            <option value="0">Elija una Organizacion</option>
-                            <option th:each="organizacion : ${organizacions}" th:value="${organizacion.id}"
-                                th:text="${organizacion.razonSocial}"></option>
-                        </select>
-                    </div>
-                    <div class="col-4">
-                        <button type="submit" name="action" value="total" id="btn_calcularHU"
-                            class="btn col btn-secondary btn-custom mx-3">
-                            Calcular HU
-                        </button>
-                    </div>
-                </div>
-                <div class="row py-2">
-                    <div class="col-md">
-                        <button type="submit" name="action" value="fecha" id="btn_desgloseFecha"
-                            class="btn col btn-secondary btn-custom mx-3">
-                            por Fecha
-                        </button>
-                    </div>
-                    <div class="col-md">
-                        <button type="submit" name="action" value="categoria" id="btn_desgloseCategoria"
-                            class="btn col btn-secondary btn-custom mx-3">
-                            por Categoria
-                        </button>
-                    </div>
-                    <div class="col-md">
-                        <button type="submit" name="action" value="empleado" id="btn_desgloseEmpleado"
-                            class="btn col btn-secondary btn-custom mx-3">
-                            por Empleado
-                        </button>
-                </div>
-                </div>
-            </form>
-        </div>
+        <table id="table_HU" class="table table-dark" style="width:100%;font-size:70%">
+            <thead>
+                <tr>
+                    <th>Organizacion</th>
+                    <th>HU Anual</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="organizacion : ${organizaciones}">
+                        <td th:text="${organizacion.getRazonSocial()}"></td>
+                        <td th:text="1"></td>
+                	   </tr>
+            </tbody>
+        </table>
     </div>
-    <div>
-        <button onClick="window.location.href='/calculoHUanual';"
-                class="btn col btn-secondary btn-custom mx-3">
-            Huella Anual
-        </button>
-    </div>
+    <ul>
+
+
+    </ul>
+
+
 </body>
 
 </html>

@@ -3,6 +3,7 @@ package dds.grupo3.api.dto.response;
 import java.time.Month;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import dds.grupo3.clases.medible.Medible;
 import lombok.AllArgsConstructor;
@@ -26,8 +27,9 @@ public class HuFecha {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTime(date);
 		
-		anio =  calendar.get(Calendar.YEAR);
-		mes = Month.of(calendar.get(Calendar.MONTH)).name();
+		anio =calendar.get(Calendar.YEAR);
+		mes = calendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
+				//(calendar.get(Calendar.MONTH+1));
 		//Para que traiga el factor de emision correspondiente de la DB hago un get
 		unMedible.getMiFactor();
 		valor = unMedible.obtenerHuella();
