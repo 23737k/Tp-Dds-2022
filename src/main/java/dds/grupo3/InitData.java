@@ -3,6 +3,9 @@ package dds.grupo3;
 import java.text.ParseException;
 import java.util.List;
 
+import com.mongodb.client.MongoClient;
+import dds.grupo3.api.repository.*;
+import dds.grupo3.api.service.HuAnualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -10,12 +13,6 @@ import org.springframework.stereotype.Component;
 import dds.grupo3.api.dto.request.MedicionDTO;
 import dds.grupo3.api.dto.request.OrganizacionDTO;
 import dds.grupo3.api.dto.request.TipoDeMedicionDTO;
-import dds.grupo3.api.repository.RepoAgenteSectorial;
-import dds.grupo3.api.repository.RepoFactorEmision;
-import dds.grupo3.api.repository.RepoMediciones;
-import dds.grupo3.api.repository.RepoMiembro;
-import dds.grupo3.api.repository.RepoOrganizacion;
-import dds.grupo3.api.repository.RepoSector;
 import dds.grupo3.api.service.BatchService;
 import dds.grupo3.api.service.OrganizacionService;
 import dds.grupo3.clases.medible.FactorEmision;
@@ -49,11 +46,17 @@ public class InitData implements CommandLineRunner {
 	OrganizacionService orgService;
 	@Autowired
 	BatchService batchService;
-	
+	@Autowired
+	HuAnualService huAnualService;
+	@Autowired
+	RepoHuAnual repoHuAnual;
+
 	@Override
 	public void run(String... args) throws Exception {
 		//TODO aca va todo lo que se quiere inicializar en la base
 		this.crearFactores();
+		repoHuAnual.deleteAll();
+		huAnualService.cargarHuellasAnuales();
 //		this.crearMiembroConTrayecto();
 //		this.crearOrgConBatch();
 	}

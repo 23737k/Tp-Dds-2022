@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface HuellaAnualController {
 
   @GetMapping("")
-  public String seleccionarAnio(Model model);
+  public String seleccionarOrganizacion(Model model);
 
   @GetMapping("/huAnual")
-  public String calculoHUanual(@RequestParam(value = "anio", required = true) Long anio,
+  public String calculoHUanual(@RequestParam(value = "idOrg", required = true) Long idOrg,
                                Model model);
 
 

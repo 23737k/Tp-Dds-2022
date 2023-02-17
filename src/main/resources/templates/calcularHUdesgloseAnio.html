@@ -46,27 +46,21 @@
     </nav>
     <br>
     <div>
-        <table id="table_HU" class="table table-dark" style="width:100%;font-size:70%">
+        <table style="width:100%;font-size:70%"  class="table table-dark">
             <thead>
                 <tr>
-                    <th>Organizacion</th>
-                    <th>HU Anual</th>
+                    <th>Año</th>
+                    <th>HU</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="organizacion : ${organizaciones}">
-                        <td th:text="${organizacion.getRazonSocial()}"></td>
-                        <td th:text="1"></td>
+                <tr th:each="huella : ${listadoHuellas.getHuellas()}">
+                        <td th:text="${huella.getAnio()}"></td>
+                        <td th:text="${huella.getValor()}"></td>
                 	   </tr>
             </tbody>
         </table>
     </div>
-    <ul>
-
-
-    </ul>
-
-
-</body>
+  </body>
 
 </html>
