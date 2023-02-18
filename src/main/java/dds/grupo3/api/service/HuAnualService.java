@@ -10,4 +10,5 @@ public interface HuAnualService {
    void actualizarListadoHuellas();
    void cargarHuellasAnuales();
    List<HuAnual> obtenerHuellasAnuales();
+   void modificarHuellasPorOrg(Long idOrg);
 }

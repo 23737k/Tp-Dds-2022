@@ -2,6 +2,7 @@ package dds.grupo3.api.controller.impl;
 
 import java.util.List;
 
+import dds.grupo3.api.service.HuAnualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +25,8 @@ import dds.grupo3.clases.organizacion.Organizacion;
 public class OrganizacionControllerImpl implements OrganizacionController {
 	@Autowired
 	OrganizacionService organizacionService;
+	@Autowired
+	HuAnualService huAnualService;
 
 
 	@Override
@@ -99,6 +102,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 		Organizacion organizacion = organizacionService.obtenerOrg(orgId);
 		model.addAttribute("organizacion", organizacion);
 		model.addAttribute("valorHU", total);
+		huAnualService.modificarHuellasPorOrg(orgId);
 		return "calcularHUvalorHU";//TODO hacer que este metodo reciba informacion del modelo anterior
 	}
 
@@ -108,6 +112,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 		List<MedicionTemplateDTO> mediciones = organizacionService.mediciones(orgId);
 		model.addAttribute("organizacion", organizacion);
 		model.addAttribute("HUs", mediciones);
+		huAnualService.modificarHuellasPorOrg(orgId);
 		return "calcularHUdesgloseCategoria";
 	}
 
@@ -118,6 +123,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 			List<HuSectorDTO> listaHuSector = organizacionService.huellaSector(orgId);
 			model.addAttribute("organizacion", organizacion);
 			model.addAttribute("HUs", listaHuSector);
+			huAnualService.modificarHuellasPorOrg(orgId);
 			return "calcularHUdesgloseEmpleado";
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -132,6 +138,7 @@ public class OrganizacionControllerImpl implements OrganizacionController {
 		List<HuFecha> huCalendario = organizacionService.medicionesFecha(orgId);
 		model.addAttribute("organizacion", organizacion);
 		model.addAttribute("HUs", huCalendario);
+		huAnualService.modificarHuellasPorOrg(orgId);
 		return "calcularHUdesgloseFecha";
 	}
 	

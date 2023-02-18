@@ -67,5 +67,12 @@ public class HuAnualServiceImpl implements HuAnualService {
     return repoHuAnual.findAll();
   }
 
+  @Override
+  public void modificarHuellasPorOrg(Long idOrg) {
+    HuAnual nuevaHuAnual= repoHuAnual.findByOrganizacionId(idOrg).get();
+    nuevaHuAnual.setHuellas(calcularHuellasAnuales(idOrg));
+    repoHuAnual.save(nuevaHuAnual);
+  }
+
 
 }
