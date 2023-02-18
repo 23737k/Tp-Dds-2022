@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface HuellaAnualController {
 
   @GetMapping("")
-  public String seleccionarOrganizacion(Model model);
-
-  @GetMapping("/huAnual")
   public String calculoHUanual(Model model);
 
 

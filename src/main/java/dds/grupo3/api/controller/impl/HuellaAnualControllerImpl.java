@@ -22,12 +22,6 @@ public class HuellaAnualControllerImpl implements HuellaAnualController {
   HuAnualService huAnualService;
 
   @Override
-  public String seleccionarOrganizacion(Model model) {
-    model.addAttribute("organizaciones",organizacionService.buscarOrganizaciones());
-    return "calcularHUAnual";
-  }
-
-  @Override
   public String calculoHUanual(Model model) {
     List<HuAnual> huellasAnuales= huAnualService.obtenerHuellasAnuales();
     List<TernaHuAnual> ternaHuAnuales= new ArrayList<>();
