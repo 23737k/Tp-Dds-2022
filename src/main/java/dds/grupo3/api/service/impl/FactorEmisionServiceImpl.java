@@ -3,6 +3,7 @@ package dds.grupo3.api.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import dds.grupo3.api.service.HuAnualService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class FactorEmisionServiceImpl implements FactorEmisionService {
     @Autowired
     RepoFactorEmision repo;
 
+    @Autowired
+		HuAnualService huAnualService;
+
     @Override
     public List<FactorEmision> buscarFactoresDeEmision() {
         return repo.findAll();
@@ -27,6 +31,7 @@ public class FactorEmisionServiceImpl implements FactorEmisionService {
 		if(elFactor.isPresent()){
 			elFactor.get().setValor(fe);
 			repo.save(elFactor.get());
+			huAnualService.actualizarListadoHuellas();
 		}
 	}
 }

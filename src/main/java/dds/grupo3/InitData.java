@@ -54,7 +54,7 @@ public class InitData implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//TODO aca va todo lo que se quiere inicializar en la base
-		this.crearFactores();
+		//this.crearFactores();
 		repoHuAnual.deleteAll();
 		huAnualService.cargarHuellasAnuales();
 //		this.crearMiembroConTrayecto();
