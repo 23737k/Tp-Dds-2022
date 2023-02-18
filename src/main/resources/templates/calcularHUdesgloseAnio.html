@@ -49,12 +49,14 @@
         <table style="width:100%;font-size:70%"  class="table table-dark">
             <thead>
                 <tr>
+                    <th>Razon Social</th>
                     <th>Año</th>
                     <th>HU</th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="huella : ${listadoHuellas.getHuellas()}">
+                <tr th:each="huella : ${listadoHuellas}">
+                        <td th:text="${huella.getRazonSocial()}"></td>
                         <td th:text="${huella.getAnio()}"></td>
                         <td th:text="${huella.getValor()}"></td>
                 	   </tr>

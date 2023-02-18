@@ -63,8 +63,8 @@ public class HuAnualServiceImpl implements HuAnualService {
   }
 
   @Override
-  public HuAnual obtenerHuellasAnuales(Long idOrg) {
-    return repoHuAnual.findByOrganizacionId(idOrg).get();
+  public List<HuAnual> obtenerHuellasAnuales() {
+    return repoHuAnual.findAll();
   }
 
 

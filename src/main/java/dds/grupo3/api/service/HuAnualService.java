@@ -9,5 +9,5 @@ public interface HuAnualService {
    List<HuellaPorAnio> calcularHuellasAnuales(Long idOrg);
    void actualizarListadoHuellas();
    void cargarHuellasAnuales();
-   HuAnual obtenerHuellasAnuales(Long idOrg);
+   List<HuAnual> obtenerHuellasAnuales();
 }

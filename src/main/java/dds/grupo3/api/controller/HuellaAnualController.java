@@ -3,7 +3,6 @@ package dds.grupo3.api.controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RequestMapping("/calculoHUanual")
 public interface HuellaAnualController {
@@ -12,8 +11,7 @@ public interface HuellaAnualController {
   public String seleccionarOrganizacion(Model model);
 
   @GetMapping("/huAnual")
-  public String calculoHUanual(@RequestParam(value = "idOrg", required = true) Long idOrg,
-                               Model model);
+  public String calculoHUanual(Model model);
 
 
 }
